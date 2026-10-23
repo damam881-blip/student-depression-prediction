@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+        name="description"
+        content="Student Depression Prediction: an educational machine-learning project that looks for patterns in student survey answers and estimates a lower or higher depression risk. Not a diagnosis."
+    >
+    <meta name="theme-color" content="#0B2130">
+
+    <title>Student Depression Prediction</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B2130'/%3E%3Cpath d='M16 6l2.6 7.4L26 16l-7.4 2.6L16 26l-2.6-7.4L6 16l7.4-2.6z' fill='%23F4B23E'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#get-started">Skip to the survey</a>
+
+    <!-- =====================================================
+         HEADER / NAVIGATION
+    ====================================================== -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+
+            <a class="brand" href="#home" aria-label="Student Depression Prediction, back to top">
+                <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M7 22 L15 9 L26 14" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+                    <path d="M15 9 L17 24" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".55"/>
+                    <circle cx="7" cy="22" r="3" fill="#5FD1B0"/>
+                    <circle cx="15" cy="9" r="3.6" fill="#F4B23E"/>
+                    <circle cx="26" cy="14" r="3" fill="#8CC3F0"/>
+                    <circle cx="17" cy="24" r="2.2" fill="currentColor"/>
+                </svg>
+                <span class="brand-text">Student Depression Prediction</span>
+            </a>
+
+            <button
+                id="menu-toggle"
+                class="menu-toggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="site-nav"
+            >
+                <span class="menu-bars" aria-hidden="true"></span>
+            </button>
+
+            <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="#about">About</a>
+                <a class="nav-link" href="#how-it-works">How It Works</a>
+                <a class="nav-link" href="#team">Team</a>
+                <a class="nav-link nav-cta" href="#get-started">Get Started</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =====================================================
+             1. HERO
+        ====================================================== -->
+        <section id="home" class="hero">
+            <div class="hero-sky" aria-hidden="true"></div>
+
+            <div class="container hero-grid">
+
+                <div class="hero-copy">
+                    <h1 class="hero-title">
+                        <span class="line"><span>Student</span></span>
+                        <span class="line line--indent"><span>Depression</span></span>
+                        <span class="line"><span>Prediction</span></span>
+                    </h1>
+
+                    <p class="hero-lede">
+                        An educational machine-learning project that reads patterns in student
+                        survey answers and estimates a lower or higher risk of depression.
+                        A way to explore what data can, and can't, tell us about well-being.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn--primary" href="#get-started">
+                            Get Started
+                            <svg class="btn-arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a class="btn btn--ghost" href="#about">Explore the Project</a>
+                    </div>
+
+                    <p class="hero-note">
+                        Twelve short questions, about three minutes.
+                        The result is an estimate, never a diagnosis.
+                    </p>
+                </div>
+
+                <div class="hero-figure">
+                    <svg
+                        id="hero-constellation"
+                        class="constellation constellation--hero"
+                        viewBox="0 0 520 520"
+                        role="img"
+                        aria-label="Twelve stars in three groups, academic, lifestyle and personal, connected by lines that meet at an estimated result."
+                    ></svg>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             2. ABOUT / WHAT THE PROJECT DOES
+        ====================================================== -->
+        <section id="about" class="section about">
+            <div class="container">
+
+                <div class="about-intro">
+                    <h2 class="section-title reveal">What this project does</h2>
+
+                    <div class="about-text reveal" style="--d:.08s">
+                        <p>
+                            Students answer a short survey about their studies, their daily
+                            habits and a few personal questions. A machine-learning model,
+                            trained on a large set of earlier survey responses, looks for
+                            patterns in those answers and returns an estimate: a lower or higher
+                            estimated risk, together with a probability.
+                        </p>
+                        <p>
+                            Think of it as a window into how machine learning reads patterns
+                            in data, not as a way to judge anyone.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="groups">
+
+                    <article class="group group--academic reveal">
+                        <svg class="group-glyph" viewBox="0 0 120 64" aria-hidden="true">
+                            <path d="M12 46 L44 14 L84 30 L108 10" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+                            <circle cx="12" cy="46" r="5" fill="currentColor"/>
+                            <circle cx="44" cy="14" r="7" fill="currentColor"/>
+                            <circle cx="84" cy="30" r="5" fill="currentColor"/>
+                            <circle cx="108" cy="10" r="4" fill="currentColor"/>
+                        </svg>
+                        <h3>Academic</h3>
+                        <p class="group-tagline">How studying is going.</p>
+                        <ul class="factor-list">
+                            <li>Academic pressure</li>
+                            <li>Study satisfaction</li>
+                            <li>CGPA</li>
+                            <li>Degree level</li>
+                        </ul>
+                    </article>
+
+                    <article class="group group--lifestyle reveal" style="--d:.1s">
+                        <svg class="group-glyph" viewBox="0 0 120 64" aria-hidden="true">
+                            <path d="M10 20 L40 48 L74 22 L110 44" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+                            <circle cx="10" cy="20" r="4" fill="currentColor"/>
+                            <circle cx="40" cy="48" r="7" fill="currentColor"/>
+                            <circle cx="74" cy="22" r="5" fill="currentColor"/>
+                            <circle cx="110" cy="44" r="5" fill="currentColor"/>
+                        </svg>
+                        <h3>Lifestyle</h3>
+                        <p class="group-tagline">How days are spent and supported.</p>
+                        <ul class="factor-list">
+                            <li>Sleep duration</li>
+                            <li>Work / study hours</li>
+                            <li>Dietary habits</li>
+                            <li>Financial stress</li>
+                        </ul>
+                    </article>
+
+                    <article class="group group--personal reveal" style="--d:.2s">
+                        <svg class="group-glyph" viewBox="0 0 120 64" aria-hidden="true">
+                            <path d="M14 14 L52 40 L80 12 L108 36" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+                            <circle cx="14" cy="14" r="5" fill="currentColor"/>
+                            <circle cx="52" cy="40" r="7" fill="currentColor"/>
+                            <circle cx="80" cy="12" r="4" fill="currentColor"/>
+                            <circle cx="108" cy="36" r="5" fill="currentColor"/>
+                        </svg>
+                        <h3>Personal</h3>
+                        <p class="group-tagline">Background and a few sensitive questions.</p>
+                        <ul class="factor-list">
+                            <li>Age</li>
+                            <li>Gender</li>
+                            <li>Family history of mental illness</li>
+                            <li>Suicidal-thought response</li>
+                        </ul>
+                    </article>
+
+                </div>
+
+                <aside class="caveat reveal">
+                    <h3>It isn't a diagnosis</h3>
+                    <p>
+                        No single answer decides the result, and none of these factors is claimed to
+                        cause depression. The model only compares how the answers fit together
+                        with patterns in earlier data. It can't see your situation, and it is no
+                        substitute for talking with a professional.
+                    </p>
+                </aside>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             3. HOW IT WORKS
+        ====================================================== -->
+        <section id="how-it-works" class="how">
+            <div class="container how-inner">
+
+                <div class="how-header">
+                    <h2 class="section-title reveal">How it works</h2>
+                    <p class="section-lede reveal" style="--d:.08s">
+                        From your answers to an estimate, in four steps.
+                    </p>
+                </div>
+
+                <ol class="steps" data-reveal>
+
+                    <li class="step" style="--i:0">
+                        <span class="step-node" aria-hidden="true"></span>
+                        <span class="step-number">01</span>
+                        <svg class="step-icon" viewBox="0 0 32 32" aria-hidden="true">
+                            <rect x="6" y="5" width="20" height="23" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M11 12h10M11 17h10M11 22h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        </svg>
+                        <h3>Answer the survey</h3>
+                        <p>You share information about your academic life, your daily habits and a few personal questions.</p>
+                    </li>
+
+                    <li class="step" style="--i:1">
+                        <span class="step-node" aria-hidden="true"></span>
+                        <span class="step-number">02</span>
+                        <svg class="step-icon" viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M5 9h22M5 16h22M5 23h22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <circle cx="11" cy="9" r="3" fill="#0F3A47" stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="21" cy="16" r="3" fill="#0F3A47" stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="13" cy="23" r="3" fill="#0F3A47" stroke="currentColor" stroke-width="1.8"/>
+                        </svg>
+                        <h3>Your answers are prepared</h3>
+                        <p>The application arranges your answers the same way the model saw its training examples, so the two can be compared fairly.</p>
+                    </li>
+
+                    <li class="step" style="--i:2">
+                        <span class="step-node" aria-hidden="true"></span>
+                        <span class="step-number">03</span>
+                        <svg class="step-icon" viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M8 9l8 8 9-10M8 9l4 15M16 17l-4 7" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+                            <circle cx="8" cy="9" r="3.2" fill="currentColor"/>
+                            <circle cx="16" cy="17" r="3.2" fill="currentColor"/>
+                            <circle cx="25" cy="7" r="3.2" fill="currentColor"/>
+                            <circle cx="12" cy="24" r="3.2" fill="currentColor"/>
+                        </svg>
+                        <h3>The model looks for patterns</h3>
+                        <p>A trained machine-learning model compares your answers with patterns it learned from earlier survey data.</p>
+                    </li>
+
+                    <li class="step" style="--i:3">
+                        <span class="step-node" aria-hidden="true"></span>
+                        <span class="step-number">04</span>
+                        <svg class="step-icon" viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M5 23a11 11 0 0 1 22 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M16 23l5-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <circle cx="16" cy="23" r="2.2" fill="currentColor"/>
+                        </svg>
+                        <h3>You get an estimate</h3>
+                        <p>You see an estimated result and a probability. It's a starting point for reflection, not a verdict.</p>
+                    </li>
+
+                </ol>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             4. TEAM
+        ====================================================== -->
+        <section id="team" class="section team">
+            <div class="container">
+
+                <div class="team-header">
+                    <h2 class="section-title reveal">Meet the team</h2>
+                    <p class="section-lede reveal" style="--d:.08s">
+                        The people behind this project. Say hello on LinkedIn.
+                    </p>
+                </div>
+
+                <ul class="team-list">
+
+                    <li class="member reveal" style="--tone:var(--amber)">
+                        <figure class="portrait">
+                            <div class="portrait-fallback" aria-hidden="true">
+                                <span class="portrait-initials">ME</span>
+                                <span class="portrait-hint">assets/team/mostafa.jpg</span>
+                            </div>
+                            <img src="/static/assets/team/mostafa.jpg" alt="Portrait of Mostafa Mohamed Abdel Hady Abdel Azem Elsharkawi" loading="lazy" width="600" height="800">
+                        </figure>
+                        <div class="member-info">
+                            <h3 class="member-name">Mostafa Mohamed Abdel Hady Abdel Azem Elsharkawi</h3>
+                            <a class="linkedin" href="https://www.linkedin.com/in/mostafa-elsharkawi-30023b357" target="_blank" rel="noopener noreferrer" aria-label="Mostafa Elsharkawi on LinkedIn (opens in a new tab)">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="member reveal" style="--tone:var(--mint); --d:.08s">
+                        <figure class="portrait">
+                            <div class="portrait-fallback" aria-hidden="true">
+                                <span class="portrait-initials">DE</span>
+                                <span class="portrait-hint">assets/team/deyaa.jpg</span>
+                            </div>
+                            <img src="/static/assets/team/deyaa.jpg" alt="Portrait of Deyaa Eldin Mohamed Emam" loading="lazy" width="600" height="800">
+                        </figure>
+                        <div class="member-info">
+                            <h3 class="member-name">Deyaa Eldin Mohamed Emam</h3>
+                            <a class="linkedin" href="https://www.linkedin.com/in/deyaa-emam" target="_blank" rel="noopener noreferrer" aria-label="Deyaa Emam on LinkedIn (opens in a new tab)">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="member reveal" style="--tone:var(--sky); --d:.16s">
+                        <figure class="portrait">
+                            <div class="portrait-fallback" aria-hidden="true">
+                                <span class="portrait-initials">MI</span>
+                                <span class="portrait-hint">assets/team/mariam.jpg</span>
+                            </div>
+                            <img src="/static/assets/team/mariam.jpg" alt="Portrait of Mariam Hany Mohamed Ibrahim" loading="lazy" width="600" height="800">
+                        </figure>
+                        <div class="member-info">
+                            <h3 class="member-name">Mariam Hany Mohamed Ibrahim</h3>
+                            <a class="linkedin" href="https://www.linkedin.com/in/mariam-hany-mohamed-ibrahim-ai2007/" target="_blank" rel="noopener noreferrer" aria-label="Mariam Hany Mohamed Ibrahim on LinkedIn (opens in a new tab)">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="member reveal" style="--tone:var(--amber); --d:.24s">
+                        <figure class="portrait">
+                            <div class="portrait-fallback" aria-hidden="true">
+                                <span class="portrait-initials">EE</span>
+                                <span class="portrait-hint">assets/team/ehab.jpg</span>
+                            </div>
+                            <img src="/static/assets/team/ehab.jpg" alt="Portrait of Ehab Misbah Mansour Elhadry" loading="lazy" width="600" height="800">
+                        </figure>
+                        <div class="member-info">
+                            <h3 class="member-name">Ehab Misbah Mansour Elhadry</h3>
+                            <a class="linkedin" href="https://www.linkedin.com/in/ehab-elhadry-569532413" target="_blank" rel="noopener noreferrer" aria-label="Ehab Elhadry on LinkedIn (opens in a new tab)">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="member reveal" style="--tone:var(--mint); --d:.32s">
+                        <figure class="portrait">
+                            <div class="portrait-fallback" aria-hidden="true">
+                                <span class="portrait-initials">BA</span>
+                                <span class="portrait-hint">assets/team/baraa.jpg</span>
+                            </div>
+                            <img src="/static/assets/team/baraa.jpg" alt="Portrait of Baraa Ahmed Saad Alsaadawy" loading="lazy" width="600" height="800">
+                        </figure>
+                        <div class="member-info">
+                            <h3 class="member-name">Baraa Ahmed Saad Alsaadawy</h3>
+                            <a class="linkedin" href="https://www.linkedin.com/in/baraa-alsaadawy-b418903aa" target="_blank" rel="noopener noreferrer" aria-label="Baraa Alsaadawy on LinkedIn (opens in a new tab)">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             5-7. GET STARTED: SURVEY + RESULT
+        ====================================================== -->
+        <section id="get-started" class="section survey">
+            <div class="container">
+
+                <div class="survey-header">
+                    <h2 class="section-title reveal">Answer twelve short questions</h2>
+                    <p class="section-lede reveal" style="--d:.08s">
+                        Choose the option that fits you best. There are no right or wrong
+                        answers, and you can stop whenever you like.
+                    </p>
+                </div>
+
+                <div class="survey-grid">
+
+                    <!-- Progress panel -->
+                    <aside class="progress-panel" aria-label="Survey progress">
+
+                        <p class="model-status" id="model-status-wrap">
+                            <span class="status-dot" id="model-status-dot" data-state="checking"></span>
+                            <span id="model-status">Checking model…</span>
+                        </p>
+
+                        <svg
+                            id="progress-constellation"
+                            class="constellation constellation--progress"
+                            viewBox="0 0 520 520"
+                            aria-hidden="true"
+                        ></svg>
+
+                        <div class="progress-readout">
+                            <p class="progress-count">
+                                <strong id="progress-text">0 of 12 answered</strong>
+                            </p>
+                            <div
+                                class="progress-track"
+                                role="progressbar"
+                                aria-label="Survey completion"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                                id="progress-track"
+                            >
+                                <div id="progress-bar" class="progress-bar"></div>
+                            </div>
+                        </div>
+
+                        <ul class="progress-sections">
+                            <li><span>Basic information</span><span data-progress-section="basic">0/4</span></li>
+                            <li><span>Academic &amp; lifestyle</span><span data-progress-section="academic">0/6</span></li>
+                            <li><span>Mental health factors</span><span data-progress-section="mental">0/2</span></li>
+                        </ul>
+
+                    </aside>
+
+
+                    <!-- Survey form -->
+                    <div class="survey-main">
+
+                        <form id="prediction-form" class="form-panel" novalidate>
+
+                            <!-- Basic information -->
+                            <fieldset class="survey-group" data-section="basic">
+                                <legend class="group-heading">
+                                    <span class="group-title">Basic information</span>
+                                    <span class="group-desc">A little about you and your studies.</span>
+                                </legend>
+
+                                <div class="question-grid">
+
+                                    <fieldset class="question" data-field="gender">
+                                        <legend class="q-label">Gender</legend>
+                                        <div class="choice-row">
+                                            <label class="choice"><input type="radio" name="gender" value="Male" required><span>Male</span></label>
+                                            <label class="choice"><input type="radio" name="gender" value="Female" required><span>Female</span></label>
+                                        </div>
+                                        <p class="q-hint">Please choose one option.</p>
+                                    </fieldset>
+
+                                    <div class="question" data-field="age">
+                                        <label class="q-label" for="age">Age</label>
+                                        <input class="text-input" id="age" name="age" type="number" inputmode="numeric" min="10" max="100" step="1" placeholder="e.g. 21" required>
+                                        <p class="q-hint">A whole number from 10 to 100.</p>
+                                    </div>
+
+                                    <fieldset class="question question--wide" data-field="degree_level">
+                                        <legend class="q-label">Degree level</legend>
+                                        <div class="choice-row">
+                                            <label class="choice"><input type="radio" name="degree_level" value="0" required><span>School (Class 10 / 12)</span></label>
+                                            <label class="choice"><input type="radio" name="degree_level" value="1" required><span>Bachelor's</span></label>
+                                            <label class="choice"><input type="radio" name="degree_level" value="2" required><span>Master's</span></label>
+                                            <label class="choice"><input type="radio" name="degree_level" value="3" required><span>Doctorate / PhD</span></label>
+                                            <label class="choice"><input type="radio" name="degree_level" value="4" required><span>Other</span></label>
+                                        </div>
+                                        <p class="q-hint">Pick the level you are currently studying at.</p>
+                                    </fieldset>
+
+                                    <div class="question" data-field="cgpa">
+                                        <label class="q-label" for="cgpa">CGPA</label>
+                                        <input class="text-input" id="cgpa" name="cgpa" type="number" inputmode="decimal" min="0" max="10" step="0.01" placeholder="e.g. 8.25" required>
+                                        <p class="q-hint">On a 10-point scale, from 0 to 10.</p>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+
+                            <!-- Academic & lifestyle -->
+                            <fieldset class="survey-group" data-section="academic">
+                                <legend class="group-heading">
+                                    <span class="group-title">Academic &amp; lifestyle</span>
+                                    <span class="group-desc">How your studies and days are going at the moment.</span>
+                                </legend>
+
+                                <div class="question-grid">
+
+                                    <fieldset class="question question--wide" data-field="academic_pressure">
+                                        <legend class="q-label">Academic pressure</legend>
+                                        <div class="scale">
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="0" required><span>0</span></label>
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="1" required><span>1</span></label>
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="2" required><span>2</span></label>
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="3" required><span>3</span></label>
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="4" required><span>4</span></label>
+                                            <label class="scale-dot"><input type="radio" name="academic_pressure" value="5" required><span>5</span></label>
+                                        </div>
+                                        <div class="scale-ends"><span>None</span><span>Very high</span></div>
+                                        <p class="q-hint">Rate from 0 to 5.</p>
+                                    </fieldset>
+
+                                    <fieldset class="question question--wide" data-field="study_satisfaction">
+                                        <legend class="q-label">Study satisfaction</legend>
+                                        <div class="scale">
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="0" required><span>0</span></label>
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="1" required><span>1</span></label>
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="2" required><span>2</span></label>
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="3" required><span>3</span></label>
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="4" required><span>4</span></label>
+                                            <label class="scale-dot"><input type="radio" name="study_satisfaction" value="5" required><span>5</span></label>
+                                        </div>
+                                        <div class="scale-ends"><span>Not satisfied</span><span>Very satisfied</span></div>
+                                        <p class="q-hint">Rate from 0 to 5.</p>
+                                    </fieldset>
+
+                                    <div class="question question--wide" data-field="work_study_hours">
+                                        <label class="q-label" for="work_study_hours">Work / study hours</label>
+                                        <input class="text-input" id="work_study_hours" name="work_study_hours" type="number" inputmode="numeric" min="0" max="24" step="1" placeholder="Hours per day" required>
+                                        <p class="q-hint">Hours per day, from 0 to 24.</p>
+                                    </div>
+
+                                    <div class="question question--wide" data-field="sleep_duration">
+                                        <label class="q-label" for="sleep_duration">Sleep duration</label>
+                                        <select class="text-input select-input" id="sleep_duration" name="sleep_duration" required>
+                                            <option value="">Select duration</option>
+                                            <option value="Less than 5 hours">Less than 5 hours</option>
+                                            <option value="5-6 hours">5-6 hours</option>
+                                            <option value="7-8 hours">7-8 hours</option>
+                                            <option value="More than 8 hours">More than 8 hours</option>
+                                            <option value="More than 8 hours by far (16 , 17 hours) in continuous">More than 8 hours by far (16, 17 hours)</option>
+                                        </select>
+                                        <p class="q-hint">Your usual sleep per night.</p>
+                                    </div>
+
+                                    <fieldset class="question question--wide" data-field="dietary_habits">
+                                        <legend class="q-label">Dietary habits</legend>
+                                        <div class="choice-row">
+                                            <label class="choice"><input type="radio" name="dietary_habits" value="Healthy" required><span>Healthy</span></label>
+                                            <label class="choice"><input type="radio" name="dietary_habits" value="Moderate" required><span>Moderate</span></label>
+                                            <label class="choice"><input type="radio" name="dietary_habits" value="Unhealthy" required><span>Unhealthy</span></label>
+                                            <label class="choice"><input type="radio" name="dietary_habits" value="Others" required><span>Others</span></label>
+                                        </div>
+                                        <p class="q-hint">Please choose one option.</p>
+                                    </fieldset>
+
+                                    <fieldset class="question question--wide" data-field="financial_stress">
+                                        <legend class="q-label">Financial stress</legend>
+                                        <div class="scale scale--five">
+                                            <label class="scale-dot"><input type="radio" name="financial_stress" value="1" required><span>1</span></label>
+                                            <label class="scale-dot"><input type="radio" name="financial_stress" value="2" required><span>2</span></label>
+                                            <label class="scale-dot"><input type="radio" name="financial_stress" value="3" required><span>3</span></label>
+                                            <label class="scale-dot"><input type="radio" name="financial_stress" value="4" required><span>4</span></label>
+                                            <label class="scale-dot"><input type="radio" name="financial_stress" value="5" required><span>5</span></label>
+                                        </div>
+                                        <div class="scale-ends"><span>Very little</span><span>Very high</span></div>
+                                        <p class="q-hint">Rate from 1 to 5.</p>
+                                    </fieldset>
+
+                                </div>
+                            </fieldset>
+
+
+                            <!-- Mental health factors -->
+                            <fieldset class="survey-group" data-section="mental">
+                                <legend class="group-heading">
+                                    <span class="group-title">Mental health factors</span>
+                                    <span class="group-desc">Two personal questions the model learned from.</span>
+                                </legend>
+
+                                <div class="question-grid">
+
+                                    <fieldset class="question" data-field="suicidal_thoughts">
+                                        <legend class="q-label">Have you ever had suicidal thoughts?</legend>
+                                        <div class="choice-row">
+                                            <label class="choice"><input type="radio" name="suicidal_thoughts" value="Yes" required><span>Yes</span></label>
+                                            <label class="choice"><input type="radio" name="suicidal_thoughts" value="No" required><span>No</span></label>
+                                        </div>
+                                        <p class="q-hint">Please choose one option.</p>
+                                    </fieldset>
+
+                                    <fieldset class="question" data-field="family_history">
+                                        <legend class="q-label">Family history of mental illness</legend>
+                                        <div class="choice-row">
+                                            <label class="choice"><input type="radio" name="family_history" value="Yes" required><span>Yes</span></label>
+                                            <label class="choice"><input type="radio" name="family_history" value="No" required><span>No</span></label>
+                                        </div>
+                                        <p class="q-hint">Please choose one option.</p>
+                                    </fieldset>
+
+                                </div>
+
+                                <p class="care-note">
+                                    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    <span>
+                                        If these questions feel heavy, it's fine to stop here. If you're going
+                                        through a hard time, talking to someone you trust or to a local
+                                        support service can help.
+                                    </span>
+                                </p>
+                            </fieldset>
+
+
+                            <div class="form-actions">
+                                <button id="submit-btn" class="btn btn--primary btn--large" type="submit">
+                                    <span>Get my estimate</span>
+                                    <svg class="btn-arrow" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+
+                                <p id="error-message" class="form-error hidden" role="alert"></p>
+                            </div>
+
+                        </form>
+
+
+                        <!-- Result -->
+                        <section id="result-card" class="result hidden" aria-live="polite" tabindex="-1" data-outcome="low">
+                            <div class="result-glow" aria-hidden="true"></div>
+
+                            <div class="result-body">
+
+                                <div class="result-copy">
+                                    <p class="result-kicker">Model prediction</p>
+                                    <h3 id="result-label" class="result-label">–</h3>
+                                    <p id="result-message" class="result-message"></p>
+                                    <p id="result-explainer" class="result-explainer"></p>
+
+                                    <button id="new-assessment" class="btn btn--ghost" type="button">
+                                        Start New Assessment
+                                    </button>
+                                </div>
+
+                                <div class="result-gauge">
+                                    <p class="gauge-number" id="result-probability">–</p>
+                                    <p class="gauge-caption">estimated probability of the higher-risk pattern, based on the information provided</p>
+
+                                    <div class="spectrum" aria-hidden="true">
+                                        <div class="spectrum-track">
+                                            <span id="result-meter" class="spectrum-marker"></span>
+                                        </div>
+                                        <div class="spectrum-scale"><span>Lower</span><span>Higher</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p class="result-disclaimer">
+                                This project is designed for educational and research purposes. The
+                                result is an estimate generated by a machine-learning model. It is not
+                                a clinical diagnosis or a replacement for professional mental-health support.
+                            </p>
+                        </section>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <div class="footer-brand">
+                <p class="footer-title">Student Depression Prediction</p>
+                <p class="footer-text">
+                    An educational machine-learning project. Estimates are based on patterns
+                    in survey data and are not a clinical diagnosis or a replacement for
+                    professional mental-health support.
+                </p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#team">Team</a>
+                <a href="#get-started">Get Started</a>
+            </nav>
+
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
